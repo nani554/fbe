@@ -1,0 +1,64 @@
+package com.factly_blog.blogs.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.factly_blog.blogs.bo.BlogBo;
+import com.factly_blog.blogs.dao.BlogDao;
+import com.factly_blog.blogs.service.BlogService;
+import com.factly_blog.blogs.vo.BlogVo;
+
+@Service
+public class BlogServiceImpl implements BlogService {
+
+	@Autowired
+	BlogDao blogdao;
+	
+	@Override
+	public BlogBo newblog(BlogVo blog) {
+		System.out.println(blog);
+		BlogBo blogs = new BlogBo();
+		blogs.setAuthor(blog.getAuthor());
+		blogs.setDescription(blog.getDescription());
+		blogs.setLike(blog.getLike());
+		blogs.setDislike(blog.getDislike());
+		blogs.setEmailId(blog.getEmailId());
+		System.out.println(blogs);
+		return blogdao.save(blogs);
+	}
+
+	@Override
+	public List<BlogBo> getallblogs() {
+		return blogdao.findAll();
+	}
+
+	@Override
+	public BlogBo getspecific(Long id) {
+		return blogdao.findById(id).orElse(null);
+	}
+
+	@Override
+	public BlogBo updateblog(BlogVo blog, Long id) {
+		BlogBo blogbo = blogdao.findById(id).orElse(null);
+		if(blogbo != null) {
+			blogbo.setAuthor(blog.getAuthor());
+			blogbo.setDescription(blog.getDescription());
+			blogbo.setLike(blog.getLike());
+			blogbo.setDislike(blog.getDislike());
+			blogbo.setEmailId(blog.getEmailId());
+			return blogdao.save(blogbo);
+		}
+		return null;
+	}
+
+	@Override
+	public void deleteblog(Long id) {
+		BlogBo blogbo = blogdao.findById(id).orElse(null);
+		if(blogbo != null) {
+			blogdao.delete(blogbo);	
+		}
+	}
+
+}

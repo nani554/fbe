@@ -1,0 +1,83 @@
+package com.factly_blog.blogs.bo;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+@Table(name="Blog")
+@Entity
+@EntityListeners(AuditingEntityListener.class)
+public class BlogBo {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY) 
+	private Long id;
+	private String author;
+	private String description;
+	private String emailId;
+	/*
+	 * private Long like; private Long dislike;
+	 */
+	
+	@LastModifiedDate
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastUpdatedOn;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
+
+	public Date getlastUpdatedOn() {
+		return lastUpdatedOn;
+	}
+
+	public void setlastUpdatedOn(Date lastUpdatedOn) {
+		this.lastUpdatedOn = lastUpdatedOn;
+	}
+
+	@Override
+	public String toString() {
+		return "BlogBo [id=" + id + ", author=" + author + ", description=" + description + ", emailId=" + emailId
+				+ ", lastUpdatedOn=" + lastUpdatedOn + "]";
+	}
+	
+}

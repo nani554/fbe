@@ -1,0 +1,5 @@
+package com.factly_blog.blogs.service;
+
+public interface AuthorService {
+
+}

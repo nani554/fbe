@@ -1,0 +1,5 @@
+package com.factly_blog.blogs.bo;
+
+public class BlogBo {
+
+}

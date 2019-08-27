@@ -1,0 +1,6 @@
+package com.factly_blog.blogs.controller;
+
+@Controller
+public class AuthorController {
+
+}

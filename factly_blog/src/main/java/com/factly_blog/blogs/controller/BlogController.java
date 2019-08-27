@@ -1,0 +1,48 @@
+package com.factly_blog.blogs.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.factly_blog.blogs.bo.BlogBo;
+import com.factly_blog.blogs.service.impl.BlogServiceImpl;
+import com.factly_blog.blogs.vo.BlogVo;
+
+@RestController
+public class BlogController {
+	
+	@Autowired
+	BlogServiceImpl blogserimpl;
+	
+	@PostMapping("/newblog/{id}")
+	public BlogBo newblog(@Valid @RequestBody BlogVo blogvo, @PathVariable("id") Long id) {
+		return blogserimpl.newblog(blogvo, id);
+	}
+	
+	@GetMapping("/allblogs")
+	public List<BlogBo> getallblogs() {
+		return blogserimpl.getallblogs();
+	}
+	
+	@GetMapping("/specificblog/{id}")
+	public BlogBo getblog(@PathVariable("id") Long id) {
+		return blogserimpl.getspecific(id);
+	}
+	
+	@PostMapping("/updateblog/{id}")
+	public BlogBo updateblog(@Valid @RequestBody BlogVo blogvo, @PathVariable("id") Long id) {
+		return blogserimpl.updateblog(blogvo, id);
+	}
+	
+	@GetMapping("/deleteblog/{id}")
+	public void deleteblog(@PathVariable("id") Long id) {
+		blogserimpl.deleteblog(id);
+	}
+}

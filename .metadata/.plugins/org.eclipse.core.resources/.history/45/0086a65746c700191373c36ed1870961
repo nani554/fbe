@@ -1,0 +1,41 @@
+package com.factly_blog.blogs.service.impl;
+
+import java.util.List;
+
+import com.factly_blog.blogs.bo.BlogBo;
+import com.factly_blog.blogs.service.BlogService;
+import com.factly_blog.blogs.vo.BlogVo;
+
+public class BlogServiceImpl implements BlogService {
+
+	@Override
+	public BlogBo newblog(BlogVo blog) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<BlogBo> getallblogs() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BlogBo getspecific(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BlogBo updateblog(BlogVo blog, Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteblog(Long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

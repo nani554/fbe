@@ -1,0 +1,50 @@
+package com.factly_blog.blogs.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.factly_blog.blogs.bo.AuthorBo;
+import com.factly_blog.blogs.service.impl.AuthorServiceImpl;
+import com.factly_blog.blogs.vo.AuthorVo;
+
+@RestController
+@RequestMapping("blog")
+public class AuthorController {
+
+	@Autowired
+	AuthorServiceImpl authserimpl;
+	
+	@PostMapping("/newauthor")
+	public AuthorBo newauthor(@Valid @RequestBody AuthorVo authvo) {
+		return authserimpl.newauthor(authvo);
+	}
+	
+	@GetMapping("/allauthors")
+	public List<AuthorBo> getallauthors() {
+		return authserimpl.getallauthors();
+	}
+	
+	@GetMapping("/author/{id}")
+	public AuthorBo getauthor(@PathVariable("id") Long id) {
+		return authserimpl.getspecific(id);
+	}
+	
+	@PostMapping("/updateauthor/{id}")
+	public AuthorBo updateauthor(@Valid @RequestBody AuthorVo author ,@PathVariable("id") Long id) {
+		return authserimpl.updateauthor(author, id);
+	}
+	
+	@GetMapping("/deleteauthor/{id}")
+	public void deleteauthor(@PathVariable("id") Long id) {
+		authserimpl.deleteauthor(id);
+	}
+}

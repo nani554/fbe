@@ -1,0 +1,46 @@
+package com.factly_blog.blogs.vo;
+
+public class BlogVo {
+
+	private String author;
+	private String description;
+	private int like;
+	private int dislike;
+	private String mailId;
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public int getLike() {
+		return like;
+	}
+	public void setLike(int like) {
+		this.like = like;
+	}
+	public int getDislike() {
+		return dislike;
+	}
+	public void setDislike(int dislike) {
+		this.dislike = dislike;
+	}
+	public String getMailId() {
+		return mailId;
+	}
+	public void setMailId(String mailId) {
+		this.mailId = mailId;
+	}
+	@Override
+	public String toString() {
+		return "BlogVo [author=" + author + ", description=" + description + ", like=" + like + ", dislike=" + dislike
+				+ ", mailId=" + mailId + "]";
+	}
+	
+}

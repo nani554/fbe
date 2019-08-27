@@ -1,0 +1,35 @@
+package com.factly_blog.blogs.bo;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+@Table(name="Blog")
+@Entity
+@EntityListeners(AuditingEntityListener.class)
+public class BlogBo {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	private String author;
+	private String description;
+	private String emailId;
+	private Long like;
+	private Long dislike;
+	
+	@LastModifiedDate
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updatedOn;
+	
+}
